@@ -742,7 +742,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top:10px;
     margin-bottom:10px;
 }
-.contact-info p{
+.contact-info > p{
      font-weight:normal;
      color: #181A1C;
 }
@@ -805,20 +805,20 @@ input[type=number]::-webkit-outer-spin-button {
 .message-btn:hover {
     background-color:#FECE1A;
 }
-.contact-info {
-    text-align:center;
-    font-size:22px;
-}
-.info-mail {
-    border:1px solid #181A1C;
-    width:60%;
-    margin:0 auto;
-    padding:15px;
-    color:#181A1C;
-}
-.info-mail a{
-    
-}
+/*.contact-info {*/
+    /*text-align:center;*/
+    /*font-size:22px;*/
+/*}*/
+/*.info-mail {*/
+    /*border:1px solid #181A1C;*/
+    /*width:60%;*/
+    /*margin:0 auto;*/
+    /*padding:15px;*/
+    /*color:#181A1C;*/
+/*}*/
+/*.info-mail a{*/
+    /**/
+/*}*/
 .black {
     color:#181A1C;
 }
