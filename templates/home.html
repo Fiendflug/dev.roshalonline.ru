@@ -533,7 +533,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container centered"style="padding-top: 20px;">
+                <div class="container centered"style="padding-top: 27px;">
                     <div class="title clearfix" id="ethernet-tarifs">
                         <div class="pull-left">
                             <h3>Почтовый адрес и контактные данные</h3>
@@ -598,7 +598,8 @@
 
         <!-- Footer section start -->
         <div class="footer">
-            <pShared by <i class="fa fa-love"></i><a href="#">{{ year }} © {{ author }} </a></pShared>
+{#            <pShared by <i class="fa fa-love"></i><a href="#">{{ year }} © {{ author }} </a></pShared>#}
+            <p>© Идея и разработка {{ author }} 2017-{{ year }}</p>
         </div>
         <!-- Footer section end -->
 
@@ -623,7 +624,7 @@
         <script type="text/javascript" src="{% static 'scripts/jquery.placeholder.js' %}"></script>
         <script type="text/javascript" src="{% static 'scripts/jquery.inview.js' %}"></script>
         <!-- Load google maps api and call initializeMap function defined in app.js -->
-        <script async="" defer="" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initializeMap"></script>
+        <script async="" defer="" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApDCuPMKMayz8ptaRdh2MiCdbIzWb_MTY&sensor=false&callback=initializeMap"></script>
         <!-- css3-mediaqueries.js for IE8 or older -->
         <!--[if lt IE 9]>
             <script src="{% static 'scripts/respond.min.js' %}"></script>

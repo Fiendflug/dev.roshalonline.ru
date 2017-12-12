@@ -768,6 +768,7 @@ input[type=number]::-webkit-outer-spin-button {
 .contact .social {
     display: inline-block;
     margin-left:0;
+    margin-top: 20px;
 }
 .contact .social li {
     line-height: 32px;
@@ -826,11 +827,12 @@ input[type=number]::-webkit-outer-spin-button {
 3.8 Footer
 ********************************************************************/
  .footer {
-    background: #181A1C;
+    background: #FECE1A;
     text-align: center;
+     font-size: 14px;
 }
 .footer > p {
-    color: #fff;
+    color: #181A1C;
     margin:0;
 }
 
