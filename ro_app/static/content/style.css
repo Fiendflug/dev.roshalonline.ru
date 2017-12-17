@@ -857,6 +857,14 @@ input[type=number]::-webkit-outer-spin-button {
 	border:1px solid #fff;
     display:none;
     background: #FECE1A;
+}#hide-social-btn {
+    display: none;
+}
+.social a:hover #social-btn {
+    display: none;
+}
+.social a:hover #hide-social-btn {
+    display: inline;
 }
 .scrollup > a {
     position:relative;
