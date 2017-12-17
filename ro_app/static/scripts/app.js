@@ -62,14 +62,38 @@
             return 1;
         }
     }
+    
+    // Set slideWidth
+    function getSlideSettings() {
+        var winWidth = $( window ).width();
+        if(winWidth >= 968 && winWidth <= 1024){
+            return {"slideWidth":300, "slideMargin":20, "maxSlides":3};
+        }
+        else if (winWidth >= 650 && winWidth < 968){
+            return {"slideWidth":300, "slideMargin":20, "maxSlides":2};
+        }
+        else if(winWidth < 650){
+            return {"slideWidth":300, "slideMargin":20, "maxSlides":1};
+        }
+        else {
+            return {"slideWidth":370, "slideMargin":25, "maxSlides":3};
+        }
+        // switch (winWidth) {
+        //     case
+        //     case 1024:
+        //         return {"slideWidth":300, "slideMargin":20, "maxSlides":3};
+        //     default:
+        //         return {"slideWidth":370, "slideMargin":25, "maxSlides":3};
+        // }
+    } 
      
     $('#eth-tarifs-slider').bxSlider({
         pager: false,
         minSlides: 1,
-        maxSlides: getMaximumSliders(),
+        maxSlides: getSlideSettings()["maxSlides"],
         moveSlides: 1,
-        slideWidth: 370,
-        slideMargin: 25,
+        slideWidth: getSlideSettings()["slideWidth"],
+        slideMargin: getSlideSettings()["slideMargin"],
         prevSelector: $('#eth-tarifs-prev'),
         nextSelector: $('#eth-tarifs-next'),
         prevText: '<i class="icon-left-open"></i>',
@@ -79,10 +103,10 @@
     $('#adsl-tarifs-slider').bxSlider({
         pager: false,
         minSlides: 1,
-        maxSlides: getMaximumSliders(),
+        maxSlides: getSlideSettings()["maxSlides"],
         moveSlides: 1,
-        slideWidth: 370,
-        slideMargin: 25,
+        slideWidth: getSlideSettings()["slideWidth"],
+        slideMargin: getSlideSettings()["slideMargin"],
         prevSelector: $('#adsl-tarifs-prev'),
         nextSelector: $('#adsl-tarifs-next'),
         prevText: '<i class="icon-left-open"></i>',

@@ -926,8 +926,45 @@ input[type=number]::-webkit-outer-spin-button {
         text-align:center;
     }
     .phone-duration button{
-        margin-top: 10px;
+        /*margin-top: 10px;*/
         text-align: center;
+    }
+    .newsletter button {
+        margin: 0 0 0 0;
+    }
+    .price-column {
+        /*margin-left: 13px;*/
+        /*width: 300px;*/
+        /*margin-left: 0px;*/
+        /*width: 89%;*/
+    }
+    .thumbnails > li {
+        /*margin-left: 54px;*/
+    }
+    /*#news-brick:nth-child(odd) {*/
+        /*margin-left: 74px;*/
+    /*}*/
+    /*#news-brick:nth-child(even) {*/
+        /*margin-left: 20px;*/
+    /*}*/
+    .service p {
+        padding: 0px;
+    }
+    #first-person, #second-person, #third-person {
+        width: 70%;
+        margin-left: 15%;
+    }
+    .highlighted-box {
+        padding: 20px 10px;
+    }
+    #news-grid {
+        /*width: 680px;*/
+        /*margin-left: 30px;*/
+        width: 90%;
+        margin-left: 5%;
+    }
+    #inmap-form {
+        margin-left: 20px;
     }
 }
 @media (max-width: 767px) {
@@ -942,9 +979,39 @@ input[type=number]::-webkit-outer-spin-button {
         margin-top:30px;
     }
     #inmap-form {
+        margin-left: auto;
         padding-top: 550px;
     }
     #contact-data {
         padding-top: 525px;
+    }
+    .phone-duration button, .newsletter button {
+        margin: 20px 0 0 0;
+    }
+    .phone-duration button, .newsletter button {
+        margin: 10px 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .price-column {
+        margin-left: auto;
+        width: 100%;
+    }
+    .thumbnails > li {
+        margin-left: auto;
+    }
+    #first-person, #second-person, #third-person {
+        width: 100%;
+        margin-left: auto;
+    }
+    #clients-brick:nth-child(even) {
+        margin-top: 20px;
+    }
+    .highlighted-box {
+        padding: 20px 5px;
+    }
+    .phone-duration button, .newsletter button {
+        margin: 20px 0 0 0;
     }
 }

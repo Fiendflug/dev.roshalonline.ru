@@ -222,7 +222,7 @@
                 </div>
                 <ul id="news-grid" class="thumbnails row">
                     {% for one_news in news %}
-                        <li class="span4 mix {{ one_news.category.name }}">
+                        <li class="span4 mix {{ one_news.category.name }}" id="news-brick">
                             <div class="thumbnail">
                                 {% if one_news.use_default_image %}
                                     <img src="{{ one_news.category.image.url }}" alt="news {{ forloop.counter }}">
@@ -315,7 +315,7 @@
                         <p>Перейдите к форме обратной связи или оставьте отзыв о нашей компании</p>
                     </div>
                     <div class="row">
-                        <div class="span6">
+                        <div class="span6" id="clients-brick">
                             <div class="highlighted-box center">
                                 <h2>Свяжитесь с нами</h2>
                                 <p>Воспользовавшись специальной формой, Вы сможете отправить запрос на подключение необходимой услуги, задать интересующий вопрос, оставить
@@ -323,7 +323,7 @@
                                <a href="#contact" class="button button-sp">Перейти</a>
                             </div>
                         </div>
-                        <div class="span6">
+                        <div class="span6" id="clients-brick">
                             <div class="highlighted-box center">
                                 <h2>Оставьте отзыв о нас</h2>
                                 <p>Уважаемый клиент, мы всегда заинтересованы в улучшении качества предоставлемых услуг связи, а также качества обслуживания. Для достижения
