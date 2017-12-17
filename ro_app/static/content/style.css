@@ -874,6 +874,9 @@ input[type=number]::-webkit-outer-spin-button {
         border-radius:40px;
         line-height: 80px;
     }
+    #contact-data {
+        padding-top: 27px;
+    }
 }
 @media (max-width: 979px) {
     body {
@@ -937,5 +940,11 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .price-column, .testimonial {
         margin-top:30px;
+    }
+    #inmap-form {
+        padding-top: 550px;
+    }
+    #contact-data {
+        padding-top: 525px;
     }
 }

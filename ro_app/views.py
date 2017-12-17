@@ -3,11 +3,7 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from .models import SiteSections, InformationCategory, TopPageInformation, Notice, \
     InternetTarif, PhoneTarif, Subscribe, Feedback
-
-from django.shortcuts import render_to_response
 from django.template.context_processors import csrf
-
-from django.views.decorators.csrf import requires_csrf_token
 
 import datetime
 import json
