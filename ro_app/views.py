@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from .models import SiteSections, InformationCategory, TopPageInformation, Notice, \
-    InternetTarif, PhoneTarif, Subscribe, Feedback
+    InternetTarif, PhoneTarif, Subscribe, Feedback, OperatorMail
 from django.template.context_processors import csrf
 
 import datetime
@@ -80,7 +80,6 @@ def subscribe(request):
             email=email_from_subscribe_form
         )
         subscrb.save()
-        # print(str(request.POST.get()))
         send_mail(
             "Спасибо, что подписались на расслыку от Roshalonline",
             "Уважаемый клиент, Вы осуществили подписку на автоматическую рассылку новостей от комапании Roshalonline"
@@ -110,11 +109,12 @@ def feedback(request):
         )
         new_feedback.save()
 
+        operator_emails = OperatorMail.objects.values_list('email', flat=True)
         send_mail(
             "Новое обращение от пользователя " + message_user_name + "( " + message_category + " )",
             message_text + " Прошу связаться со мной по телефону - " + str(message_phone),
             "roshal_online_test_informer@bk.ru",
-            ["atnr@bk.ru"],
+            list(operator_emails),
             fail_silently=False
         )
 

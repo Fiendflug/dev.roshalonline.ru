@@ -335,6 +335,25 @@ class Subscribe (models.Model):
         verbose_name_plural="Список электронных адресов для подписки"
 
 
+class OperatorMail(models.Model):
+    email = models.EmailField(
+        max_length=100,
+        verbose_name="E-mail адрес",
+        help_text="Укажите электронный адрес на который следует отправлять уведомления"
+    )
+    description = models.CharField(
+        max_length=300,
+        verbose_name="Комментарий",
+        help_text="Прокомментируйте принадлежность данного E-mail адреса"
+    )
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name="Электронный адрес для уведомлений",
+        verbose_name_plural="Список электроных адресов для уведомлений"
+
 class Feedback(models.Model):
     CHOICES_CATEGORIES = (
         ("Общие вопросы", "Общие вопросы"),
