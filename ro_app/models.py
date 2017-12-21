@@ -1,9 +1,12 @@
 from django.db import models
+from django.core.mail import EmailMessage
 from django.core.validators import RegexValidator
 from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
-import sys
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+import sys, os
 
 valid_symbols = RegexValidator(r'^[a-z]*$', "Допустимы только строчные латинские символы")
 
@@ -392,3 +395,47 @@ class Feedback(models.Model):
     class Meta:
         verbose_name="Обращение от пользователя",
         verbose_name_plural="Все обращения от пользователей"
+
+class UserAlert(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name="Заголовок уведомления",
+        help_text="Укажите заголовок для уведомления. Он будет являться темой электронного письма"
+    )
+    message = models.CharField(
+        max_length=500,
+        verbose_name="Сообщение",
+        help_text="Тело сообщения уведомления. Максимум 500 символов"
+    )
+    image = models.ImageField(
+        default=None,
+        blank=True,
+        null=True,
+        upload_to="images/user_alerts_images/",
+        verbose_name="Прикрепленное изображение",
+        help_text="Рекомендуемый размер изображения - 640 на 400 пикселей до 1 мегабйта. В противном случае возможны "
+                  "перебои доставки, связанные с ограничениями почтовых клиентов"
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name="Уведомление для подписчиков"
+        verbose_name_plural="Уведомления для подписчиков"
+
+@receiver(post_save, sender=UserAlert, dispatch_uid="send_user_alert")
+def send_user_alert(sender, instance, **kwargs):
+    print("Post save sig")
+    subscr_emails = list(Subscribe.objects.values_list('email', flat=True))
+    image = instance.image
+    if subscr_emails:
+        for subscriber in subscr_emails:
+            email = EmailMessage()
+            email.subject = instance.title
+            email.body = instance.message
+            email.from_email = "roshal_online_test_informer@bk.ru"
+            email.to = [subscriber, ]
+            if instance.image:
+                email.attach_file(instance.image.path)
+            email.send()

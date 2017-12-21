@@ -195,13 +195,6 @@
 
     // Set activity nav-pills for tariffs navigate
 
-    // $('#tarif-nav').click(function () {
-    //     $('#tarif-li').each(
-    //
-    //     );
-    //     $(this).addClass('active');
-    // });
-
     //Scroll to contact form and set on this form connect tariff option
 
     $('#eth-tarifs-slider a').click(function () {

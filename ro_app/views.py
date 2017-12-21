@@ -61,9 +61,12 @@ def calulated_phone_tarif(request):
         phone_tarif = PhoneTarif.objects.filter(phone_code__exact=code_date)
         prices = None
         for t in phone_tarif:
-            prices = "Будний день с 8:00 до 20:00 - " + str(t.first_price) + " руб/мин   Будний день с 20:00 до 8:00 - " \
-                     + str(t.second_price) + " руб/мин   Праздничный или выходной день - " + \
-                     str(t.third_price) + " руб/мин"
+            # prices = "Будний день с 8:00 до 20:00 - " + str(t.first_price) + " руб/мин   Будний день с 20:00 до 8:00 - " \
+            #          + str(t.second_price) + " руб/мин   Праздничный или выходной день - " + \
+            #          str(t.third_price) + " руб/мин"
+            prices = "Будний день с 8:00 до 20:00 - %s руб. за 1 минуту<br />Будний день с 20:00 до 8:00 - %s руб. " \
+                     "за 1 минуту <br />Праздничный или выходной день - %s руб. за 1 минуту <br />" % \
+                     (str(t.first_price), str(t.second_price), str(t.third_price))
         if(prices != None):
             return HttpResponse(prices)
         else:
