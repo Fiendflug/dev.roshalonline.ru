@@ -14,7 +14,7 @@ def home(request):
 
     """ Rendering a roshalonline home page """
 
-    author = "Кинеев Алексей"
+    author = "Kineev Alexey"
     site_sections = SiteSections.objects.all()
     info_categories = InformationCategory.objects.all()
     top_page_informers = TopPageInformation.objects.all().order_by('-creation_date')[:3]
