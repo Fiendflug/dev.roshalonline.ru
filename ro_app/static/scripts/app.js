@@ -293,7 +293,14 @@
             },
             success: function (response) {
                 if (response !== 'BAD') {
-                    $('#success-price').text(response).show();
+                    $('#success-price').empty();
+                    var $sprice = $( "#success-price" ),
+                        str = response,
+                        html = $.parseHTML( str ),
+                        nodeNames = [];
+                    $sprice.append( html );
+                    $('#success-price').show();
+                    // $('#success-price').text(response).show();
                 } else {
                     alert("Ошибка отправки данных формы на сервер. Получен BAD ответ от сервера.");
                 }

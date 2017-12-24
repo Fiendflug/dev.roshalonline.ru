@@ -6,6 +6,7 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from decimal import *
 import sys, os
 
 valid_symbols = RegexValidator(r'^[a-z]*$', "Допустимы только строчные латинские символы")
@@ -322,6 +323,26 @@ class PhoneTarif(models.Model):
         verbose_name = "МГ/МН тариф",
         verbose_name_plural = "МГ/МН тарифы"
 
+class PhoneTarifFromCSV(models.Model):
+    file = models.FileField(
+        default=None,
+        blank=None,
+        null=False,
+        upload_to="import/phone_tarifs/",
+        verbose_name="Файл импорта МГ/МН тарифов",
+        help_text="Импорт возможен только из CSV файла с разделителем ';'."
+                  "Также перед импортом обязательно проверяйте кодировку (строго utf-8) структуру CSX файла на "
+                  "соответствие формату - "
+                  "'Название направления;Код;Стоимость в будни;Стоимость в вечернее время;Стоимость в праздники'. "
+                  "В случае несоответствия формату импорт не будет выполнен либо будет выполнен с ошибками. "
+    )
+
+    def __str__(self):
+        return self.file.name
+
+    class Meta:
+        verbose_name = "Импорт МГ/МН тарифов из внешнего CSV файла"
+        verbose_name_plural = "Импорт МГ/МН тарифов из внешнего CSV файла"
 
 class Subscribe (models.Model):
     email = models.EmailField(
@@ -426,9 +447,8 @@ class UserAlert(models.Model):
 
 @receiver(post_save, sender=UserAlert, dispatch_uid="send_user_alert")
 def send_user_alert(sender, instance, **kwargs):
-    print("Post save sig")
     subscr_emails = list(Subscribe.objects.values_list('email', flat=True))
-    image = instance.image
+    # image = instance.image
     if subscr_emails:
         for subscriber in subscr_emails:
             email = EmailMessage()
@@ -439,3 +459,22 @@ def send_user_alert(sender, instance, **kwargs):
             if instance.image:
                 email.attach_file(instance.image.path)
             email.send()
+
+@receiver(post_save, sender=PhoneTarifFromCSV, dispatch_uid="import_phone_tarifs")
+def import_phone_tarifs(sender, instance, **kwargs):
+    if not os.path.basename(instance.file.name).split('.')[1].lower() == "csv":
+        return
+    file = open(instance.file.path, encoding='utf-8')
+    for line in file:
+        print(line)
+        phone_tarif_model = PhoneTarif()
+        info = line.split(';')
+        if not info[4].index("(") == -1:
+            third_price_correct = info[4][:info[4].index("(")]
+            info[4] = third_price_correct
+        phone_tarif_model.title = info[0].strip()
+        phone_tarif_model.phone_code = int(info[1].strip())
+        phone_tarif_model.first_price = Decimal(info[2].strip())
+        phone_tarif_model.second_price = Decimal(info[3].strip())
+        phone_tarif_model.third_price = Decimal(info[4].strip())
+        phone_tarif_model.save()

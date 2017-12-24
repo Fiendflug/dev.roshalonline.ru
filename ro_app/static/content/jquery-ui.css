@@ -204,6 +204,9 @@
 	margin: 0;
 	display: block;
 	outline: 0;
+	max-height: 300px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 .ui-menu .ui-menu {
 	position: absolute;

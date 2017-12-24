@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import SiteSections, InformationCategory, TopPageInformation, Notice, \
-    InternetTarif, PhoneTarif, Subscribe, Feedback, OperatorMail, UserAlert
+    InternetTarif, PhoneTarif, Subscribe, Feedback, OperatorMail, UserAlert, PhoneTarifFromCSV
 from django.forms import ModelForm, Textarea
 
 
@@ -14,7 +14,8 @@ models = [
     Subscribe,
     OperatorMail,
     Feedback,
-    UserAlert
+    UserAlert,
+    PhoneTarifFromCSV
 ]
 
 class TopPageInformationForm(ModelForm):
