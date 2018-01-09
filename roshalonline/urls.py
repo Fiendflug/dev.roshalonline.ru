@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^feedback/', views.feedback),
     url(r'^calls/', views.phone_calls),
     url(r'^prices/', views.calulated_phone_tarif),
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

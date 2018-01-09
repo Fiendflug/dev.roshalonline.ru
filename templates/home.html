@@ -426,7 +426,7 @@
                     <div class="phone-duration">
                         {% csrf_token %}
                         <form class="inline-form" method="post">
-                            <input name="duration-input" id="ph-duration" class="span8" placeholder="Введите телефонный код оператора, населенного пункта или страны" required />
+                            <input name="duration-input" id="ph-duration" class="span8" placeholder="Введите телефонный код оператора, населенного пункта или страны (минимум 4 знака)" required />
                             <button id="ph-submit" class="button button-ph">Расчитать</button>
                         </form>
                         <div id="success-price" class="alert alert-success invisible">
@@ -567,43 +567,15 @@
 {#                                    <span class="icon-linkedin-circled"></span>#}
                                 </a>
                             </li>
-{#                            <li>#}
-{#                                <a href="">#}
-{#                                    <span class="icon-pinterest-circled"></span>#}
-{#                                </a>#}
-{#                            </li>#}
-{#                            <li>#}
-{#                                <a href="">#}
-{#                                    <span class="icon-dribbble-circled"></span>#}
-{#                                </a>#}
-{#                            </li>#}
-{#                            <li>#}
-{#                                <a href="">#}
-{#                                    <span class="icon-gplus-circled"></span>#}
-{#                                </a>#}
-{#                            </li>#}
                         </ul>
                     </div>
                 </div>
-{#                <div class="container">#}
-{#                    <div class="span9 center contact-info">#}
-{#                    <div class="title">#}
-{#                        <p><span>Наш адрес: </span><span>140730 г. Рошаль ул. Косякова д. 13</span></p>#}
-{#                        <p><span>Контактный телефон: </span><span>+7 496 455 81 05</span></p>#}
-{#                        <p><span>Факс: </span><span>+7 496 455 81 09</span></p>#}
-{#                        <p>Наш адрес - 140730 г. Рошаль ул. Косякова д. 13</p>#}
-{#                        <p>Контактный телефон - +7(496)455-81-05 Факс - +7(496)455-81-09</p>#}
-{#                        <a href="mailto:info@roshalonline.ru" class="button">Написать нам</a>#}
-
-{#                    </div>#}
-{#                </div>#}
             </div>
         </div>
         <!-- Contact section edn -->
 
         <!-- Footer section start -->
         <div class="footer">
-{#            <pShared by <i class="fa fa-love"></i><a href="#">{{ year }} © {{ author }} </a></pShared>#}
             <p>© Powered by {{ author }} 2017-{{ year }}</p>
         </div>
         <!-- Footer section end -->

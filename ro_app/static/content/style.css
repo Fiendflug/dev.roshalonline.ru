@@ -1,8 +1,7 @@
 /*
- * A Design by GraphBerry
- * Author: GraphBerry
- * Author URL: http://graphberry.com
- * License: http://graphberry.com/pages/license
+ * Deep redisign Pluton's template from http://graphberry.com by Kineev Alexey
+ * Author: Kineev Alaxey
+ * Author URL: https://www.facebook.com/alexey.kineev
  */
 
 /* Table of content
@@ -29,7 +28,7 @@
 **********************************************************************/
  body {
     font-family:'Roboto', sans-serif;
-    color: #FFF;
+    color: #FFFFFF;
     line-height:1.2em;
     font-size:17px;
     line-height:20px;
@@ -871,8 +870,87 @@ input[type=number]::-webkit-outer-spin-button {
     top:7px;
     color:#fff;
 }
+
 /*
-4 Responsible
+4 Error
+********************************************************************/
+
+#error {
+    /*margin-top: -60px;*/
+    /*padding-bottom: 0px;*/
+}
+#err-block {
+    background: #FECE1A;
+    color: #181A1C;
+}
+#err-block img{
+    height: 300px;
+}
+#err-block a {
+    background-color: #181A1C;
+    color: #FECE1A;
+    margin: auto 10px;
+}
+#error-parent {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+#error-block {
+    display: block;
+    border: none;
+}
+#err-block a:hover, #err-block a:active{
+    background-color:#FECE1A;
+    color: #181A1C;
+    border: 1px solid #181A1C;
+    margin: -1px 9px;
+}
+
+#error-container {
+    padding-bottom: 0px;
+}
+#error-container p {
+    color: #181A1C;
+}
+#error-info h1 {
+    font-size: 100px;
+    margin: 5px auto;
+}
+#info-button a {
+    margin: 0 5px;
+}
+
+/*.parent {*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*overflow: auto;*/
+/*}*/
+
+/*.block {*/
+    /*background: #60a839;*/
+
+    /*img {*/
+        /*display: block;*/
+        /*border: none;*/
+    /*}*/
+/*}*/
+
+
+/*
+5 Responsible
 ********************************************************************/
  @media (min-width: 1200px) {
     .thumbnail .more {
@@ -884,6 +962,10 @@ input[type=number]::-webkit-outer-spin-button {
     }
     #contact-data {
         padding-top: 27px;
+    }
+    #error-info {
+        width: 50%;
+        margin-left: 0px;
     }
 }
 @media (max-width: 979px) {
@@ -974,6 +1056,19 @@ input[type=number]::-webkit-outer-spin-button {
     #inmap-form {
         margin-left: 20px;
     }
+    #error-container {
+        margin-top: 90px;
+        margin-bottom: 60px;
+    }
+    #error-container title {
+        margin-bottom: 30px;
+    }
+    #err-block a {
+        margin-bottom: 10px;
+    }
+    #error-parent {
+        display: block;
+    }
 }
 @media (max-width: 767px) {
     .info-mail {
@@ -1021,5 +1116,18 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .phone-duration button, .newsletter button {
         margin: 20px 0 0 0;
+    }
+}
+
+@media (max-height: 720px) {
+    #error-container {
+        margin-top: 90px;
+        margin-bottom: 60px;
+    }
+    #error-container title {
+        margin-bottom: 30px;
+    }
+    #error-parent {
+        display: block;
     }
 }

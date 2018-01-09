@@ -266,7 +266,7 @@
         select: function (event, ui) {
             AutoCompleteSelectHandler(event, ui)
         },
-        minLength: 2
+        minLength: 4
     });
 
     function AutoCompleteSelectHandler(event, ui) {
